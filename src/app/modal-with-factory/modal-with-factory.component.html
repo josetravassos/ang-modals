@@ -5,7 +5,17 @@
   </p-header>
   <ng-template dialog-content></ng-template>
 </p-dialog> -->
-<div>
-  {{header}}
-  <ng-template modal-content></ng-template>
+<div class="app-modal">
+  <div class="app-modal-body">
+    <div class="modal-header">
+      <h4 id="modal-title" class="modal-title">{{header}}</h4>
+    </div>
+    <div class="modal-body">
+      <ng-template modal-content></ng-template>
+    </div>
+    <div class="modal-footer">
+      <button (click)="close()">Close</button>
+    </div>
+  </div>
 </div>
+<div class="app-modal-background"></div>

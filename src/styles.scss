@@ -1,40 +1,192 @@
 /* MODAL STYLES NEED TO BE PLACED HERE TO BE ACCESSIBLE BY THE BODY OF THE HTML */
-modal-basic {
-    display: none;
 
-    .app-modal {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+body{
+  font-family: Helvetica, sans-serif;
+}
 
-        z-index: 1000;
-        
-        overflow: auto;
+modal-basic, modal-with-factory {
+  display: none;
 
-        .app-modal-body {
-            padding: 20px;
-            background: #fff;
+  .app-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 
-            margin: 40px;
+    z-index: 1041;
+
+    overflow: auto;
+
+    .app-modal-body {
+        max-width: 630px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0 auto;
+        background-color: white;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        box-shadow: 0 3px 9px rgba(0, 0, 0, 0.2);
+        background-clip: padding-box;
+        outline: 0;
+        z-index: 1042;
+        min-width: 310px;
+        animation-name: fade-in-content;
+        animation-duration: 0.3s;
+        animation-fill-mode: forwards;
+        will-change: transform;
+      
+        &::before {
+          content: "";
+          position: absolute;
+          top: -4px;
+          height: 4px;
+          width: 100%;
+          background-color: #26afdf;
+          border-top-left-radius: 6px;
+          border-top-right-radius: 6px;
         }
     }
+  }
 
-    .app-modal-background {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+  .app-modal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: rgba(0, 0, 0, 0.6);
 
-        background-color: #000;
-        opacity: 0.75;
-        
-        z-index: 900;
-    }
+    animation-name: fade-in-backdrop;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+  }
 }
 
 body.app-modal-open {
-    overflow: hidden;
+  overflow: hidden;
+}
+
+
+modal-basic {
+  display: none;
+}
+
+.modal-content.modal-warning:before {
+  background-color: yellow;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+}
+
+.modal-header {
+  justify-content: space-between;
+  background-color: #fefefe;
+  border-bottom: 1px solid #cccccc;
+
+  .modal-title {
+    margin: 0;
+    font-size: 24px;
+  }
+}
+
+.modal-body {
+  display: block;
+  font-weight: 400;
+}
+
+.modal-footer {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 1px;
+    left: 16px;
+    right: 16px;
+    background-color: #e1e1e1;
+  }
+}
+
+.modal-footer__btn-cta {
+  margin-right: 16px;
+}
+
+.modal-warning-container {
+  background-color: yellow;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+.modal-warning-text {
+  margin-left: 4px;
+  font-weight: 300;
+}
+
+.content-projection-wrapper {
+  overflow-y: auto;
+  max-height: 560px;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  animation-name: fade-in-backdrop;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-in-backdrop {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-content {
+  0% {
+    transform: translate(-50%, -60%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+button {
+    color: white;
+    background-color: #027baf;
+    border: none;
+    width: auto;
+    height: 40px;
+    font: 18px;
+    padding: 8px 16px;
+    cursor: default;
+    border-radius: 80px;
+    &:hover {
+      background-color: #26afdf;
+      cursor: pointer;
+  }
+}
+
+modal-with-factory {
+  display: block;
 }
