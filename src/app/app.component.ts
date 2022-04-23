@@ -24,6 +24,6 @@ export class AppComponent implements OnInit {
   }
 
   public openDialogZ(){
-    this.modalWithFactory.create(User, {header: 'This is test header'});
+    this.modalWithFactory.create(User, {header: 'This is the header'});
       }
 }

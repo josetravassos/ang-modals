@@ -2,6 +2,7 @@
 
 body{
   font-family: Helvetica, sans-serif;
+  color: #484848;
 }
 
 modal-basic, modal-with-factory {
@@ -189,4 +190,25 @@ button {
 
 modal-with-factory {
   display: block;
+}
+
+input,
+textarea,
+select {
+  appearance: none;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  padding: 12px;
+
+  &:focus,
+  &:focus-visible {
+    outline: 1px solid #027baf;
+    border-color: #027baf;
+    box-shadow: 0 0 0 1px #027baf;
+  }
+}
+
+label{
+  display: block;
+  margin-bottom: 10px;
 }
