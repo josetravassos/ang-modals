@@ -3,7 +3,7 @@ import { Component, ViewEncapsulation, ElementRef, Input, OnInit, OnDestroy } fr
 import { ModalService } from './modal.service';
 
 @Component({
-  selector: 'app-modal',
+  selector: 'modal-basic',
   templateUrl: './modal.component.html'
 })
 export class ModalComponent implements OnInit, OnDestroy {

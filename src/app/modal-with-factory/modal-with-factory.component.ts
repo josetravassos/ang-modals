@@ -2,7 +2,7 @@ import { Component, ViewChild, OnInit, ComponentFactoryResolver } from '@angular
 import { ModalDirective } from './modal.directive';
 
 @Component({
-  selector: 'app-modal-with-factory',
+  selector: 'modal-with-factory',
   templateUrl: './modal-with-factory.component.html',
   styleUrls: ['./modal-with-factory.component.scss']
 })
