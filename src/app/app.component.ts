@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalService } from './modal/modal.service';
+import { ModalService } from './modal-basic/modal.service';
+import { ModalWithFactoryService } from './modal-with-factory/modal.service';
+import {User} from './user/user.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,7 +10,7 @@ import { ModalService } from './modal/modal.service';
 export class AppComponent implements OnInit {
   title = 'Angular Modal';
 
-  constructor(private modalService: ModalService) {}
+  constructor(private modalService: ModalService, private modalWithFactory: ModalWithFactoryService) {}
 
   ngOnInit() {}
 
@@ -20,4 +22,8 @@ export class AppComponent implements OnInit {
     this.modalService.close(id);
     console.log('passou app')
   }
+
+  public openDialogZ(){
+    this.modalWithFactory.create(User, {header: 'This is test header'});
+      }
 }
