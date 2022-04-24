@@ -10,8 +10,8 @@ export class ModalWithFactoryComponent implements OnInit {
 
   header: string = "";
   content: any;
-  dialogService: any;
-  __id: any;
+  modalService: any;
+  _id: any;
 
   @ViewChild(ModalDirective)
   contentHolder!: ModalDirective;
@@ -31,11 +31,11 @@ export class ModalWithFactoryComponent implements OnInit {
   setup(comp:any, config:any, service:any) {
     this.content = comp;
     this.header = config.header;
-    this.dialogService = service;
+    this.modalService = service;
   }
 
   close(){
-    this.dialogService.close(this.__id);
+    this.modalService.close(this._id);
   }
 }
 

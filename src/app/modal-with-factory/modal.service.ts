@@ -4,21 +4,21 @@ import { ModalWithFactoryComponent } from './modal-with-factory.component';
 
 @Injectable()
 export class ModalWithFactoryService {
-  private dialogSubject: Subject<any> = new Subject<any>();
-  public dialogObservable$: Observable<any>;
+  private modalSubject: Subject<any> = new Subject<any>();
+  public modalObservable$: Observable<any>;
   counter: number = 1;
-  dialogs: any = [];
+  modals: any = [];
 
   constructor(private compFactRes: ComponentFactoryResolver, private injector: Injector, private appRef: ApplicationRef) {
-    this.dialogObservable$ = this.dialogSubject.asObservable();
+    this.modalObservable$ = this.modalSubject.asObservable();
   }
 
   public create(comp:any, config:any) {
     const compRef = this.compFactRes.resolveComponentFactory(ModalWithFactoryComponent).create(this.injector);
-    const id = "dialog" + this.counter++;
-    compRef.instance.__id = id;
+    const id = "modal" + this.counter++;
+    compRef.instance._id = id;
     compRef.instance.setup(comp, config, this);
-    this.dialogs[id] = { compRef: compRef, hostView: compRef.hostView };
+    this.modals[id] = { compRef: compRef, hostView: compRef.hostView };
 
     this.appRef.attachView(compRef.hostView);
 
@@ -27,9 +27,9 @@ export class ModalWithFactoryService {
   }
 
   close(id: string) {
-    if (this.dialogs[id]) {
-      this.dialogs[id].compRef.destroy();
-      this.appRef.detachView(this.dialogs[id].hostView);
+    if (this.modals[id]) {
+      this.modals[id].compRef.destroy();
+      this.appRef.detachView(this.modals[id].hostView);
 }
   }
 }

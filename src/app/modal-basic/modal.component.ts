@@ -20,7 +20,7 @@ export class ModalComponent implements OnInit, OnDestroy {
           return;
       }
 
-      // element at the bottom of page to be displayed above everything else
+      // move element to the bottom of page to be displayed above everything else
       document.body.appendChild(this.element);
 
       // close on background click
@@ -39,7 +39,7 @@ export class ModalComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
       this.modalService.remove(this.id as string);
       this.element.remove();
-      console.log('passou no destroy')
+      console.log('destroyed')
   }
  
   modalDisplayBlock(): void {
@@ -50,6 +50,5 @@ export class ModalComponent implements OnInit, OnDestroy {
   modalDisplayNone(): void {
       this.element.style.display = 'none';
       document.body.classList.remove('app-modal-open');
-      console.log('passou modal component')
   }
 }
