@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
     console.log("passou app");
   }
 
-  public openDialogZ() {
+  public openModalWithFactory() {
     this.modalWithFactory.create(User, { header: "Modal with Factory" });
   }
 }

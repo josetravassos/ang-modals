@@ -16,20 +16,20 @@ export class ModalWithFactoryComponent implements OnInit {
   @ViewChild(ModalDirective)
   contentHolder!: ModalDirective;
 
-  constructor(private compFacRes: ComponentFactoryResolver) {
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {
 
   }
 
   ngOnInit() {
-    const compRef = this.compFacRes.resolveComponentFactory(this.content);
+    const componentRef = this.componentFactoryResolver.resolveComponentFactory(this.content);
     setTimeout(() => {
-      this.contentHolder.viewContainerRef.createComponent(compRef);
+      this.contentHolder.viewContainerRef.createComponent(componentRef);
     }, 0);
    
   }
 
-  setup(comp:any, config:any, service:any) {
-    this.content = comp;
+  setup(component:any, config:any, service:any) {
+    this.content = component;
     this.header = config.header;
     this.modalService = service;
   }

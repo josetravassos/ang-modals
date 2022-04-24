@@ -10,21 +10,20 @@ import { ModalDirective } from './modal-with-factory/modal.directive';
 import { User } from './user/user.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ModalComponent,
-    ModalWithFactoryComponent,
-    ModalDirective,
-    User
-  ],
-  imports: [
-    BrowserModule
-  ],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ],
-  providers: [ModalService, ModalWithFactoryService],
-  entryComponents: [ModalWithFactoryComponent, User],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        ModalComponent,
+        ModalWithFactoryComponent,
+        ModalDirective,
+        User
+    ],
+    imports: [
+        BrowserModule
+    ],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+    ],
+    providers: [ModalService, ModalWithFactoryService],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
