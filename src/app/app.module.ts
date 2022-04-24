@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -19,6 +19,9 @@ import { User } from './user/user.component';
   ],
   imports: [
     BrowserModule
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   providers: [ModalService, ModalWithFactoryService],
   entryComponents: [ModalWithFactoryComponent, User],
