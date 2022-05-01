@@ -7,7 +7,7 @@
       <ng-template modal-content></ng-template>
     </div>
     <div class="modal-footer">
-      <taco-button size="sm" value="{{confirmText}}" type="cta" (click)="handleConfirm()" class="gp-modal-footer__btn-cta"></taco-button>&nbsp;
+      <taco-button size="sm" [attr.loading]="isPending ? true : undefined" value="{{confirmText}}" type="cta" (click)="handleConfirm()" class="gp-modal-footer__btn-cta"></taco-button>&nbsp;
     <taco-button value="{{cancelText}}" type="link" (click)="close()"></taco-button>
     </div>
   </div>

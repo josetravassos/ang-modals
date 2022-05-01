@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   title = "Angular Modal";
 
   @Input() tacoScriptId = "taco-js";
+  @Input() lottieScriptId = 'lottie-js';
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -38,6 +39,7 @@ export class AppComponent implements OnInit {
       renderer,
       this.tacoScriptId
     );
+    loadScript(`https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js`, this.document, renderer, this.lottieScriptId);
   }
 
   openModal(id: string) {
@@ -59,7 +61,7 @@ export class AppComponent implements OnInit {
         return new Promise((resolve) => {
           setTimeout(() => {
             resolve(console.log('resolve'));
-          }, 100);
+          }, 1000);
         });
       },
     });
