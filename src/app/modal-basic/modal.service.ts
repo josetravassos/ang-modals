@@ -24,6 +24,5 @@ export class ModalService {
         // close modal specified by id
         const modal = this.modals.find(x => x.id === id);
         modal.modalDisplayNone();
-        console.log('passou service', modal)
     }
 }

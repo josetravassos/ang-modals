@@ -1,14 +1,20 @@
 <div class="app-modal">
   <div class="modal-content">
     <div class="modal-header">
-      <h4 id="modal-title" class="modal-title">{{header}}</h4>
+      <h4 id="modal-title" class="modal-title">{{headerText}}</h4>
     </div>
     <div class="modal-body">
       <ng-template modal-content></ng-template>
     </div>
     <div class="modal-footer">
-      <button (click)="close()">Close</button>
+      <taco-button size="sm" value="{{confirmText}}" type="cta" (click)="handleConfirm()" class="gp-modal-footer__btn-cta"></taco-button>&nbsp;
+    <taco-button value="{{cancelText}}" type="link" (click)="close()"></taco-button>
     </div>
   </div>
 </div>
 <div class="app-modal-background"></div>
+
+<!-- WE COULD PASS THE TACO-MODAL HERE -->
+<!-- <taco-modal>
+  <ng-template modal-content></ng-template>
+</taco-modal> -->

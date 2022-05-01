@@ -32,7 +32,12 @@ export class AppComponent implements OnInit {
 
   ngAfterViewInit() {
     const renderer = this.rendererFactory.createRenderer(null, null);
-    loadScript(`https://cc3cdndev.blob.core.windows.net/design-system/latest/taco-components/bundled.js`, this.document, renderer, this.tacoScriptId);
+    loadScript(
+      `https://cc3cdndev.blob.core.windows.net/design-system/latest/taco-components/bundled.js`,
+      this.document,
+      renderer,
+      this.tacoScriptId
+    );
   }
 
   openModal(id: string) {
@@ -45,7 +50,15 @@ export class AppComponent implements OnInit {
   }
 
   public openModalWithFactory() {
-    this.modalWithFactory.create(User, { header: "Modal with Factory" });
+    this.modalWithFactory.create(User, {
+      headerText: "Modal with Factory",
+      bodyText: "Content from modal with factory",
+      confirmText: "Confirm",
+      cancelText: "Cancel",
+      confirm: () => {
+        return console.log("Promise resolved");
+      },
+    });
   }
 }
 
