@@ -56,7 +56,11 @@ export class AppComponent implements OnInit {
       confirmText: "Confirm",
       cancelText: "Cancel",
       confirm: () => {
-        return console.log("Promise resolved");
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve(console.log('resolve'));
+          }, 100);
+        });
       },
     });
   }
