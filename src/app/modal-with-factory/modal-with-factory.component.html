@@ -1,4 +1,4 @@
-<div class="app-modal">
+<!-- <div class="app-modal">
   <div class="modal-content">
     <div class="modal-header">
       <h4 id="modal-title" class="modal-title">{{headerText}}</h4>
@@ -12,10 +12,17 @@
     </div>
   </div>
 </div>
-<div class="app-modal-background"></div>
+<div class="app-modal-background"></div> -->
 
 <!-- WE COULD PASS THE TACO-MODAL HERE -->
-<!-- 
-<taco-modal title="Title" type="content-projection">
-  <div slot="content-projection">teste</div>
-</taco-modal> -->
+
+<taco-modal title="{{headerText}}" body="{{bodyText}}" type="component-projection">
+  <div slot="component-projection">
+    <ng-template modal-content></ng-template>
+  </div>
+  <div slot="footer-projection">
+    <taco-button size="sm" [attr.loading]="isPending ? true : undefined" value="{{confirmText}}" type="cta"
+      (click)="handleConfirm()" class="gp-modal-footer__btn-cta"></taco-button>&nbsp;
+    <taco-button value="{{cancelText}}" type="link" (click)="close()"></taco-button>
+  </div>
+</taco-modal>

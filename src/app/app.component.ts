@@ -9,7 +9,7 @@ import {
 } from "@angular/core";
 import { ModalService } from "./modal-basic/modal.service";
 import { ModalWithFactoryService } from "./modal-with-factory/modal.service";
-import { User } from "./user/user.component";
+import { ComponentTest } from "./user/component-test.component";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -18,7 +18,9 @@ import { User } from "./user/user.component";
 export class AppComponent implements OnInit {
   title = "Angular Modal";
 
-  @Input() tacoScriptId = "taco-js";
+  @Input() tacoScriptId = 'taco-js';
+  @Input() tacoStyleId = 'taco-css';
+  @Input() tacoIndexStyleId = 'taco-index-css';
   @Input() lottieScriptId = 'lottie-js';
 
   constructor(
@@ -34,11 +36,13 @@ export class AppComponent implements OnInit {
   ngAfterViewInit() {
     const renderer = this.rendererFactory.createRenderer(null, null);
     loadScript(
-      `https://cc3cdndev.blob.core.windows.net/design-system/latest/taco-components/bundled.js`,
+      `/assets/bundled.js`,
       this.document,
       renderer,
       this.tacoScriptId
     );
+    loadStyle(`https://cc3cdndev.blob.core.windows.net/design-system/latest/taco-styles/taco-index.css`, this.document, renderer, this.tacoIndexStyleId);
+    loadStyle(`https://cc3cdndev.blob.core.windows.net/design-system/latest/taco-tokens/css/design-tokens-v1.css`, this.document, renderer, this.tacoStyleId);
     loadScript(`https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js`, this.document, renderer, this.lottieScriptId);
   }
 
@@ -52,15 +56,15 @@ export class AppComponent implements OnInit {
   }
 
   public openModalWithFactory() {
-    this.modalWithFactory.create(User, {
+    this.modalWithFactory.create(ComponentTest, {
       headerText: "Modal with Factory",
-      bodyText: "Content from modal with factory",
-      confirmText: "Confirm",
-      cancelText: "Cancel",
+      bodyText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec iaculis tellus. Maecenas scelerisque arcu ac efficitur viverra.",
+      confirmText: "Save",
+      cancelText: "Close without saving",
       confirm: () => {
         return new Promise((resolve) => {
           setTimeout(() => {
-            resolve(console.log('resolve'));
+            resolve(console.log('resolved'));
           }, 1000);
         });
       },
@@ -100,4 +104,15 @@ export const isScriptInDOM = (id: string, src: string, document: Document) => {
 
     return src === scriptEl.src;
   });
+};
+
+export const loadStyle = (url: string, document: Document, renderer: Renderer2, id: string) => {
+  if (!document.getElementById(id)) {
+    const link = renderer.createElement('link') as HTMLLinkElement;
+    link.setAttribute('id', id);
+    link.setAttribute('mimeType', 'text/css');
+    link.rel = 'stylesheet';
+    link.href = url;
+    renderer.appendChild(document.head, link);
+  }
 };

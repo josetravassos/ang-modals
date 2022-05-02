@@ -7,7 +7,7 @@ import { ModalService } from './modal-basic/modal.service';
 import { ModalWithFactoryService } from './modal-with-factory/modal.service';
 import { ModalWithFactoryComponent } from './modal-with-factory/modal-with-factory.component';
 import { ModalDirective } from './modal-with-factory/modal.directive';
-import { User } from './user/user.component';
+import { ComponentTest } from './user/component-test.component';
 
 @NgModule({
     declarations: [
@@ -15,7 +15,7 @@ import { User } from './user/user.component';
         ModalComponent,
         ModalWithFactoryComponent,
         ModalDirective,
-        User
+        ComponentTest
     ],
     imports: [
         BrowserModule

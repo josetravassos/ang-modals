@@ -16,7 +16,6 @@ export class ModalWithFactoryComponent implements OnInit {
   isPending = false;
   content: any;
   modalService: any;
-  obj: {} = {};
   _id: any;
 
   @ViewChild(ModalDirective)
@@ -47,7 +46,6 @@ export class ModalWithFactoryComponent implements OnInit {
     this.confirmText = config.confirmText;
     this.cancelText = config.cancelText;
     this.modalService = service;
-    this.obj = config.obj;
     this.confirm = config.confirm;
   }
 
