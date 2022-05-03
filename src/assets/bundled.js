@@ -2730,6 +2730,29 @@ button, ul {
     transform: translate(-50%, -50%);
     opacity: 1;
   }
+}
+.modal-header__x-btn {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  cursor: pointer;
+  background: transparent;
+  text-align: inherit;
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+  /* Normalize \`line-height\`. Cannot be changed from \`normal\` in Firefox 4+. */
+  line-height: 0;
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  /* Corrects inability to style clickable \`input\` types in iOS */
+  -webkit-appearance: none;
+}
+.modal-header__x-btn:focus {
+  outline: 1px solid var(--color-blue-500);
 }`;
 
     // Declaring the HTML element name for this component
@@ -2748,6 +2771,31 @@ button, ul {
             //declaring the modal type
             //properties: default / modal-warning / content-projection
             this.type = TacoModalType.MODAL_DEFAULT;
+            this.handleFocus = (inputElement) => {
+                setTimeout(() => {
+                    if (!inputElement) {
+                        return;
+                    }
+                    inputElement.focus();
+                }, 100);
+            };
+            this.handleClose = () => {
+                const closeEvent = new CustomEvent("close", {
+                    detail: { message: "closed." },
+                    bubbles: true,
+                    composed: true,
+                });
+                this.dispatchEvent(closeEvent);
+            };
+            this.handleSave = () => {
+                const saveEvent = new CustomEvent("save", {
+                    detail: { message: "saved." },
+                    bubbles: true,
+                    composed: true,
+                });
+                this.dispatchEvent(saveEvent);
+                this.handleClose();
+            };
         }
         // connectedCallback is a lifecycle event similar to compoundDidMount
         // It will do something once the component loads onto the DOM
@@ -2799,12 +2847,34 @@ button, ul {
     >
       <div class="modal-header">
         <h4 id="modal-title" class="modal-title">${this.title}</h4>
+        <button
+                    ${n(this.handleFocus)}
+                    id="close-button"
+                    class="modal-header__x-btn"
+                    @click=${this.handleClose}
+                  >
+                    <taco-icon
+                      size="md"
+                      icon="ic-close"
+                      fill="grey-900"
+                    ></taco-icon>
+                  </button>
       </div>
       <div class="modal-body">
         ${this.handleBodyContent()}
       </div>
       <div class="modal-footer">
-      <slot name="footer-projection"></slot>
+      <taco-button
+      value="${this.actionLabel}"
+      type="cta"
+      @click=${this.handleSave}
+      class="modal-footer__btn-cta"
+    ></taco-button>
+    <taco-button
+      value="${this.secondaryActionLabel}"
+      type="link"
+      @click=${this.handleClose}
+    ></taco-button>
       </div>
     </div>
     <div class="modal-backdrop"></div>

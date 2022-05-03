@@ -1,10 +1,10 @@
-<taco-modal title="{{headerText}}" body="{{bodyText}}" type="component-projection">
+<taco-modal title="{{headerText}}" body="{{bodyText}}" actionLabel="{{confirmText}}" secondaryActionLabel="{{cancelText}}" type="component-projection" (save)="handleConfirm()" (close)="close()">
   <div slot="component-projection">
     <ng-template modal-content></ng-template>
   </div>
-  <div slot="footer-projection">
+  <!-- <div slot="footer-projection">
     <taco-button size="sm" [attr.loading]="isPending ? true : undefined" value="{{confirmText}}" type="cta"
       (click)="handleConfirm()" class="gp-modal-footer__btn-cta"></taco-button>&nbsp;
     <taco-button value="{{cancelText}}" type="link" (click)="close()"></taco-button>
-  </div>
+  </div> -->
 </taco-modal>

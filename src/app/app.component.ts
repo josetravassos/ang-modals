@@ -46,20 +46,12 @@ export class AppComponent implements OnInit {
     loadScript(`https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js`, this.document, renderer, this.lottieScriptId);
   }
 
-  openModal(id: string) {
-    this.modalService.open(id);
-  }
-
-  closeModal(id: string) {
-    this.modalService.close(id);
-    console.log("passou app");
-  }
 
   public openModalWithFactory() {
     this.modalWithFactory.create(ComponentTest, {
       headerText: "Modal with Factory",
       confirmText: "Save",
-      cancelText: "Close without saving",
+      cancelText: "Close",
       confirm: () => {
         return new Promise((resolve) => {
           setTimeout(() => {
