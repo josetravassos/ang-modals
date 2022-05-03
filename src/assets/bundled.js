@@ -2771,6 +2771,7 @@ button, ul {
             //declaring the modal type
             //properties: default / modal-warning / content-projection
             this.type = TacoModalType.MODAL_DEFAULT;
+            this.isPending = false;
             this.handleFocus = (inputElement) => {
                 setTimeout(() => {
                     if (!inputElement) {
@@ -2780,7 +2781,7 @@ button, ul {
                 }, 100);
             };
             this.handleClose = () => {
-                const closeEvent = new CustomEvent("close", {
+                const closeEvent = new CustomEvent("tacoComponentModalClose", {
                     detail: { message: "closed." },
                     bubbles: true,
                     composed: true,
@@ -2788,13 +2789,12 @@ button, ul {
                 this.dispatchEvent(closeEvent);
             };
             this.handleSave = () => {
-                const saveEvent = new CustomEvent("save", {
+                const saveEvent = new CustomEvent("tacoComponentModalConfirm", {
                     detail: { message: "saved." },
                     bubbles: true,
                     composed: true,
                 });
                 this.dispatchEvent(saveEvent);
-                this.handleClose();
             };
         }
         // connectedCallback is a lifecycle event similar to compoundDidMount
@@ -2864,7 +2864,8 @@ button, ul {
         ${this.handleBodyContent()}
       </div>
       <div class="modal-footer">
-      <taco-button
+      <taco-button 
+      loading="${l$1(this.isPending)}"
       value="${this.actionLabel}"
       type="cta"
       @click=${this.handleSave}
@@ -2901,6 +2902,9 @@ button, ul {
     __decorate([
         e$4({ type: String })
     ], Tacomodal.prototype, "type", void 0);
+    __decorate([
+        e$4({ type: Boolean, reflect: true })
+    ], Tacomodal.prototype, "isPending", void 0);
     Tacomodal = __decorate([
         n$3("taco-modal".toLowerCase())
         // Creating a class of Example Component
