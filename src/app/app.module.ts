@@ -7,7 +7,7 @@ import { ModalService } from './modal-basic/modal.service';
 import { ModalWithFactoryService } from './modal-with-factory/modal.service';
 import { ModalWithFactoryComponent } from './modal-with-factory/modal-with-factory.component';
 import { ModalDirective } from './modal-with-factory/modal.directive';
-import { ComponentTest } from './user/component-test.component';
+import { ComponentTest } from './component-test/component-test.component';
 
 @NgModule({
     declarations: [

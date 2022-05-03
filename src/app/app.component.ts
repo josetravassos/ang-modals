@@ -9,7 +9,7 @@ import {
 } from "@angular/core";
 import { ModalService } from "./modal-basic/modal.service";
 import { ModalWithFactoryService } from "./modal-with-factory/modal.service";
-import { ComponentTest } from "./user/component-test.component";
+import { ComponentTest } from "./component-test/component-test.component";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -58,7 +58,6 @@ export class AppComponent implements OnInit {
   public openModalWithFactory() {
     this.modalWithFactory.create(ComponentTest, {
       headerText: "Modal with Factory",
-      bodyText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec iaculis tellus. Maecenas scelerisque arcu ac efficitur viverra.",
       confirmText: "Save",
       cancelText: "Close without saving",
       confirm: () => {
