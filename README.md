@@ -2,6 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.7.
 
+## POC
+
+ - Angular wrapper component that injects and removes the taco-modal dynamically using ng-templates to project content into the taco-modal body. 
+
+ - no ngx-bootstrap needed
+
 ## Content projection into Taco Modal
 
 All the content is being passed into the modal via the ng-template that lives inside of the angular modal engine.
