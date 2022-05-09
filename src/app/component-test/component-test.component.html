@@ -1,3 +1,18 @@
-<taco-article size="lg" headline="Component passed into the modal"
-desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima neque id ab ratione distinctio quidem quaerat laudantium quasi laborum! Blanditiis, exercitationem! Atque, nemo.">
+<div>
+    <p>All the content is being passed into the modal via the <strong>ng-template</strong> that lives inside of the angular modal engine.
+    </p>
+    <p>This <strong>ng-template</strong>  is wrapped by the <strong>taco-modal <i>component-projection slot</i></strong> that will project all the components content into <strong>taco-modal</strong> </p>
+    <p>These are the properties and methods that are available to <strong>taco-modal</strong> :</p>
+        <ul class="ul-style">
+            <li><strong>title</strong> - Modal title copy ( headerText )</li>
+            <li><strong>body</strong> - Modal body copy ( bodyText )</li>
+            <li><strong>type="component-projection"</strong> - Modal content projection slot</li>
+            <li><strong>actionLabel</strong> - Modal submit button copy ( confirmText) </li>
+            <li><strong>secondaryActionLabel</strong> - Modal cancel button copy ( secondaryActionLabel) </li>
+            <li><strong>tacoComponentModalConfirm</strong> - Modal method to handle save ( handleConfirm() )</li>
+            <li><strong>tacoComponentModalClose</strong> - Modal method to handle cancel </li>
+        </ul>
+</div>
+
+<taco-article size="md" headline="Taco Article" desc="Here is a taco-article component. ">
 </taco-article>

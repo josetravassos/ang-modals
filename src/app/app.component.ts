@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
 
   public openModalWithFactory() {
     this.modalWithFactory.create(ComponentTest, {
-      headerText: "Modal with Factory",
+      headerText: "Modal Title",
       confirmText: "Save",
       cancelText: "Close",
       confirm: () => {
