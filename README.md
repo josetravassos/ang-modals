@@ -1,27 +1,26 @@
-# AngularModal
+# Angular Modal Engine
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.7.
 
-## Development server
+## Content projection into Taco Modal
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+All the content is being passed into the modal via the ng-template that lives inside of the angular modal engine.
 
-## Code scaffolding
+This ng-template is wrapped by the taco-modal component-projection slot that will project all the components content into taco-modal
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Properties and methods available to Taco Modal :
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+title - Modal title copy ( headerText )
 
-## Running unit tests
+body - Modal body copy ( bodyText )
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+type="component-projection" - Modal content projection slot
 
-## Running end-to-end tests
+actionLabel - Modal submit button copy ( confirmText)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+secondaryActionLabel - Modal cancel button copy ( secondaryActionLabel)
 
-## Further help
+tacoComponentModalConfirm - Modal method to handle save ( handleConfirm() )
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+tacoComponentModalClose - Modal method to handle cancel
